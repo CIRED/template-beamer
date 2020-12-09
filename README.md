@@ -1,10 +1,10 @@
 # template-beamer
-Template beamer pour des présentations du labo.
+Template beamer pour des prÃ©sentations du labo. Regardez [ici](https://github.com/CIRED/template-beamer/blob/main/template_cired.pdf) pour avoir un aperÃ§u de ce Ã  quoi cela ressemble.
 
-- `template_cired.lyx` fichier lyx permettant de faire une présentation avec lyx
-- `template_cired.tex` fichier permettant de faire une présentation avec latex (les 2 fichiers sont équivalents)
-- `figures` dossier où mettre les graphiques
+- `template_cired.lyx` fichier lyx permettant de faire une prÃ©sentation avec lyx
+- `template_cired.tex` fichier permettant de faire une prÃ©sentation avec latex (les 2 fichiers sont Ã©quivalents)
+- `figures` dossier oÃ¹ mettre les graphiques
 - `logos` logos du labo
 
 # Origine
-basé sur le template Moo.
+basÃ© sur le template Moo.
