@@ -1,0 +1,416 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%-------------------------------------------%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  									File created: 9 Sep, 2015
+%
+% This beamer style file was created based on a template from programming-r-pro-bro.blogspot.com
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%-------------------------------------------%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% This style file is a combination of the four files required to create the FAA beamer theme.
+
+%		1. Inner
+%       2. Outer
+%    	3. Color
+%		4. Font
+
+% You can directly use this file instead of the using the other theme file "beamerthemeFractal.sty" and calling the 4 styles in the TeX document.
+
+
+%%% Defining the preamble
+\mode<presentation>
+\usepackage{pgfcomp-version-0-65}
+\usepackage{color}
+\usepackage{tikz}
+
+
+%%%%%%%%%%%%%%
+%%
+%%		Color theme
+%%
+%%%%%%%%%%%%%%
+
+
+%%%%%%
+% We need to define a set of colours that will be assigned to various parts of the presentation. I personally believe that Beamer already does have some great themes, so if we really want to build our own, we will have go to the tiniest of details and tweak them.
+%%%%%%
+
+
+
+%%%%%%
+% LaTeX, like R, has a huge set of colours to choose from and there are many ways we can access them.
+% Colours in LaTeX are provided by the xcolor pacakge that loads by default. However, the xcolor package by itself does not provide enough breadth in colours.
+% More colours can be called by using the "dvipsnames" options while calling beamer in the preamble of the document, e.g., \documentclass[xolor = dvipsnames]{beamer}
+
+% Other than that we can also blend differnt colours to achive the desired colour mix or simply use the RGB codes to call that particular color.
+% For blending two colours, we need to specify the two colours (Duh-uh!) and the percentage share of the two colours in the folowing format: <color1>!<percentage of color1>!<color2>
+% If percentage of color1 is specified as x%, then percentage of color2 will automatically be taken as (100 - n)%.
+
+
+% Why don't we try out a few options and see for ourselves.   
+
+
+% Here we are defining only four colours. We are primarily only going to use the first one.
+% example: \definecolor{Ftitle}{RGB}{0, 98, 107} % (rgb - 0, 0, 0) is nothing but black
+% Here, we are using "rgb" in small case and this notation for decimal values of "rgb" ranging from 0 to 1
+
+% To specify the integer values of "RGB", ranging from 0 t0 255, we need to use the "RGB" in CAPS or UPPERCASE 
+\definecolor{Descitem}{RGB}{0, 0, 139} % Darkish blue
+\definecolor{uipaleblue}{RGB}{96,123,139} % une couleur grisatre
+
+\definecolor{Ftitle}{RGB}{0, 155, 178} % le vert CIRED
+\definecolor{black}{RGB}{0, 0, 0}
+
+% colors which will be used for the blocks (Alert block, standard block etc.)
+\definecolor{StdTitle}{RGB}{26, 33, 141}
+\definecolor{StdBody}{RGB}{213,24,0}
+
+\definecolor{AlTitle}{RGB}{255, 190, 190}
+\definecolor{AlBody}{RGB}{213,24,0}
+
+\definecolor{ExTitle}{RGB}{201, 217, 217}
+\definecolor{ExBody}{RGB}{213,24,0}
+
+
+% Another color for the background canvas using the blending option
+%\definecolor{BgShade}{red!30!white}
+%%% Important note: While trying this, I found out that a colour cannot be defined this way, it can only be set or called for a particular feature using the \setbeamercolor{}{} command. We will use this below to show this.
+
+
+
+%%%%%%
+% Assign colours to different constitutens of the presentation as per the requriements.
+%%%%%%
+
+% This sets the colour of the title (and subtitle) of the presentation and titles of all the slides in the presentation to Green CIRED color.
+\setbeamercolor{frametitle}{fg = Ftitle}
+\setbeamercolor{title}{fg = Ftitle}
+\setbeamercolor{subtitle}{fg = Ftitle}
+
+% This sets the colour of the author date and institute on the title page to black
+\setbeamercolor{author}{fg = black}
+\setbeamercolor{institute}{fg = black}
+\setbeamercolor{date}{fg = black}
+
+% In case you choose to display the Table of Contents, or the Outline slide.
+\setbeamercolor{section in toc}{fg = Ftitle}
+\setbeamercolor{section in toc shaded}{fg = Ftitle} 
+
+% The colour of the items is set to gren CIRED, and the colour of subitems and subsubitems are set to black.
+\setbeamercolor{item}{fg = Ftitle}
+\setbeamercolor{subitem}{fg = black}
+\setbeamercolor{subsubitem}{fg = black}
+
+% This sets the color for each item heading of the description environment.
+\setbeamercolor{description item}{fg = Descitem}
+
+% NOTE: Setting the color black for all the items also sets in black for other environemnts like enumerate.
+
+% We also need to fix the colours for captions for figures and tables.
+\setbeamercolor{caption}{fg = black}
+\setbeamercolor{caption name}{fg = black}
+
+% In addition, we can also change the background colour of the slides depending on pur requirement.
+% \setbeamercolor{background canvas}{bg = blue!5}
+% We have commented out this command because this is just for illustrative purposes and has not been used to define the background colour of the slides.
+
+% color of the footer (number of pages etc.): white over a grey (``uipaleblue'') background
+%\setbeamercolor{footer}{fg=white,bg=uipaleblue}
+% ALTERNATIVE: color of the footer (number of pages etc.): grey (``uipaleblue'') over a white background
+\setbeamercolor{footer}{fg=uipaleblue,bg=white}
+
+
+%%%%%%
+% Now, there are three types of boxes in beamer: 
+% 		1. Simple, or standard block, which can be invoked using definition or theorem
+%		2. Alert block
+%		3. Example block 
+% We will customize all these blocks based on our requirements
+
+
+% Standard block
+%\setbeamercolor{block body}{bg = StdLight}
+%\setbeamercolor{block title}{fg = black, bg = Std}
+
+\setbeamercolor{block title}{fg = Descitem, bg = StdTitle!15!white}
+\setbeamercolor{block body}{bg = StdBody!5!white}
+
+% Alert block
+\setbeamercolor{block title alerted}{bg = AlTitle}
+\setbeamercolor{block body alerted}{bg = AlBody!5!white}
+
+% Example block
+\setbeamercolor{block title example}{bg = ExTitle}
+\setbeamercolor{block body example}{bg = ExBody!5!white}
+
+
+%%%%%%
+% And one final thing, the colour of the text
+%\setbeamercolor{normal text}{fg = black}
+\setbeamercolor{normal text}{fg = Ftitle}
+\setbeamerfont{normal text}{shape=\bf}
+
+% The colours of the items
+\setbeamercolor{itemize/enumerate body}{fg=Ftitle}
+\setbeamerfont{itemize/enumerate body}{shape=\bf}
+
+\setbeamercolor{itemize/enumerate subbody}{fg=black}
+\setbeamerfont{itemize/enumerate subbody}{shape=\normalfont}
+
+\setbeamercolor{line}{fg=Ftitle, bg=Ftitle}
+
+%%%%%%%%%%%%%%
+%%
+%%		Font theme
+%%
+%%%%%%%%%%%%%%
+
+
+%%%%%%
+% Here we are using default fonts
+%\usefonttheme{professionalfonts}
+\usefonttheme{professionalfonts}
+
+% Font for the presentation title
+\setbeamerfont{title}{family=\normalfont,series=\bf,size = \huge}
+% Font for the presentation subtitle
+\setbeamerfont{subtitle}{family=\normalfont,series=\it,size = \Large}
+% Font for the presentation author(s)
+\setbeamerfont{author}{series=\normalfont,size = \normalsize}
+% Font for the presentation date
+\setbeamerfont{date}{series=\normalfont,size = \scriptsize}
+
+% Font of the frame titles
+\setbeamerfont{frametitle}{series=\bf,size = \huge}
+
+% Font of the footer
+\setbeamerfont{footer}{series=\normalfont,size = \tiny}
+% Font of the header (table of content, at top of slides)
+\setbeamerfont{header}{series=\normalfont,size = \tiny}
+
+%%%%%%%%%%%%%%
+%%
+%%		Inner theme
+%%
+%%%%%%%%%%%%%%
+
+
+%%%%%%
+% Here we am using the rounded theme for the overall "feel" of the presentation. You can change the specific details by editing that particular option as we have done below.
+\useinnertheme[shadow]{rounded}
+
+% Instead of rounded circles, we will use squares as the indicator for items, triangles for subitems and circles for sub-subitems
+\setbeamertemplate{itemize items}[square]
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{itemize subsubitem}[circle]
+\setbeamertemplate{sections/subsections in toc}[sections numbered]
+
+% The default option for enumerate environment removes the circles around the numbers provided by the "rounded" inner theme. Just simple numbers remain.
+\setbeamertemplate{enumerate items}[default]
+
+
+
+%%%%%%%%%%%%%%
+%%
+%%		Outer theme
+%%
+%%%%%%%%%%%%%%
+
+
+%%%%%%
+% The outer theme takes the most amount of effort and time to customize. 
+
+
+%%%%%%
+% In the outer theme, we will try to do the following:
+%	1. Change the headline by putting a horizontal line
+%	2. Change the footline and include custom information depending on our requirements
+%	3. Organize the presentation title and the frame titles
+
+
+%%%%%%
+% Let's start with the headline. The approach that we plan to take for the headline and footline is similar.
+% We will first define a new command and then include the command in the \setbeamertemplate{} option. 
+% I tried a couple of approaches that would make the method more simple but could not come up with one. In case you do find a more aesthetic approach, please do send it accross. The contact information is on the top of the page.
+
+
+% We include the table of content of the presentation above 
+\setbeamertemplate{headline}[text line]
+{
+  \linethickness{0pt}
+  \framelatex{
+  \begin{beamercolorbox}[wd=\paperwidth]{section in head/foot}
+    %\hskip6mm
+    \vskip2pt
+    \usebeamerfont{header}
+    \insertnavigation{0pt}
+  \end{beamercolorbox}}
+}
+
+ 
+%le nom des autres sections est peu touchable directement et ne possède pas de couleur ou police propre, on ne peut jouer que sur un pourcentage de mélange (valeur par défaut : 50) entre la couleur de premier plan et celle du fond, plus la valeur donnée est faible, plus la couleur devient "légére" :
+\setbeamertemplate{section in head/foot shaded}[default][40]
+
+% if we want to include a logo, we can do the following:
+% Now the logo. As it turns out. I could not include the logo in the headline. If I tried to, the headline kept shifting downwards.
+% Acting a little smart and lazy, I just included the logo in the right sidebar and shifted it up. 
+%\setbeamertemplate{sidebar canvas right}{
+%	\vspace*{3pt}\hspace*{-25pt}%
+%		{\includegraphics[height=28pt]{moo.jpg}}} 
+
+%\setbeamertemplate{sidebar canvas left}{
+%	\vspace*{-15pt}\hspace*{5pt}%
+%		{\includegraphics[height=70pt]{moo.jpg}}} 
+
+%\setbeamertemplate{sidebar canvas right}{
+%	\vspace*{8.25cm}\hspace*{-45pt}%
+%		{\includegraphics[height=25pt]{moo2.jpg}}} 
+
+
+%%%%%
+% Now that we have changed the headline, we will need to orient the frame titles in a way that the come at the right stop just above the horizontal line.
+\setbeamertemplate{frametitle}{
+\vspace*{3mm}\hspace*{0cm}
+    \begin{beamercolorbox}{frametitle}
+        \hspace*{0.1ex}
+		\begin{beamercolorbox}{frametitle}\insertframetitle\end{beamercolorbox}
+% Add a horizontal line that runs from left of the slide to the right, just below the title.  
+		\tiny \par
+		\begin{beamercolorbox}[center,wd=\textwidth,ht=1pt]{line}
+		\end{beamercolorbox}
+    \end{beamercolorbox}
+	\vspace{-12pt}
+    }
+
+
+%%%%%
+% Like mentioned above, we will take a similar approach to customize the footline as well and inclued FAA in it.
+\newcommand{\Ffootline}{%
+  	%\insertsection % The left end of the footline
+	\hspace*{4mm}
+  	\insertframenumber/\inserttotalframenumber
+  	\hspace{4mm}
+	\insertshortdate{} % The left
+	\hspace{\fill}
+	\insertshorttitle{}% The center
+    \hspace{\fill}
+	\textit{\insertshortauthor{}} 
+	\hspace*{4mm}% And the right end
+  }
+
+\@tempdima=\textwidth%  width of internal colorbox
+  \advance\@tempdima by -1ex %  it is slightly smaller than the external one  
+  % We declare the image that will be used as the 2nd logo (at the bottom: the logo with the address)
+\pgfdeclareimage[width=0.24\@tempdima,height=2ex]{adressi_bas}{logos/logo_bas.png} %height=2.2ex
+
+\setbeamertemplate{footline}{%
+  \usebeamerfont{footer}
+  %We put one beamercolorbox into another beamercolorbox
+  \@tempdima=\textwidth%  width of internal colorbox
+  \advance\@tempdima by -1ex %  it is slightly smaller than the external one  
+  \begin{beamercolorbox}[wd=\paperwidth,ht=3ex,dp=0.75ex,center]{footer}
+	\leavevmode%    enables to horizontally align the internal beamercolorboxes
+  	\begin{beamercolorbox}[wd=0.25\@tempdima,ht=2.25ex,dp=0ex]{footer}%
+		\hspace*{4mm} 
+		\insertframenumber/\inserttotalframenumber
+		\hspace{4mm}
+		\insertshortdate{}
+		\vspace*{0.5ex} 
+  	\end{beamercolorbox}
+	\leavevmode
+	\begin{beamercolorbox}[wd=0.25\@tempdima,ht=2.25ex,dp=0ex]{footer}%
+		\centering
+		\insertshorttitle{}
+		\hspace*{0.1mm}
+		\vspace*{0.5ex} 
+	\end{beamercolorbox}
+	\leavevmode
+	\begin{beamercolorbox}[wd=0.24\@tempdima,ht=2.25ex,dp=0ex,right]{footer}%
+		\textit{\insertshortauthor{}}
+		\hspace*{4mm}
+		\vspace*{0.5ex} 
+	\end{beamercolorbox}	
+	\leavevmode
+	\begin{beamercolorbox}[wd=0.25\@tempdima,ht=2.6ex,dp=0ex,right]{footer}%
+		%\vspace*{0.5ex} 
+		\pgfuseimage{adressi_bas}
+		\hspace*{0.01\@tempdima}
+	\end{beamercolorbox}
+	\hfill
+	\end{beamercolorbox}
+	
+  }
+
+  	
+ 
+%%%%%%
+% We will also remove the navigation symbols, which I personally don't find very useful
+\setbeamertemplate{navigation symbols}{}
+
+
+%%%%%%%
+%% Now the toughest part--at least for me--customizing the title page.
+%% Putting a logo on the title page and text beside it was quite a difficult task and to be fairly honest, my code is not effecient at all. At the very least, it is plain clumsy.
+%% Though it does solve the purpose (I hate to use this phrase) it is neither "neat" nor "cool".
+%% Anyway, let's see how we went about it.
+%
+  	
+% We declare the image that will be used as the logo (at the top)
+\pgfdeclareimage[height = 65pt]{institution-logo}{logos/logo_cired.png}
+
+% We declare the image that will be used as the tutelles logo (at the top)
+\pgfdeclareimage[height = 35pt]{tutelles-logo}{logos/logo_tutelles.jpg}
+
+% We declare the image that will be used as the 2nd logo (at the bottom: the logo with the address)
+\pgfdeclareimage[height = 42pt]{adressi}{logos/logo_adresse.png}
+
+% we divide the page horizonatlly into 3 beamercolorboxes: one for the main logo, one for the totle authors etc. and one for the logo with the address
+
+\setbeamertemplate{title page}{%
+  \vspace*{8pt}%we add some white space before the first colorbox, so that the logo is not at the top of the page
+  %fist colorbox
+ \begin{beamercolorbox}[left,wd=\paperwidth,ht=70pt]{Title}
+  \hspace*{6pt}
+\begin{beamercolorbox}[left,wd=0.2\paperwidth,ht=69pt]{Title}
+\pgfuseimage{institution-logo}
+\end{beamercolorbox}\hfill
+\begin{beamercolorbox}[right,wd=0.7\paperwidth,ht=69pt]{Title}
+\vbox to 65pt {\vfil\pgfuseimage{tutelles-logo}\vfil}%
+\end{beamercolorbox}
+\vspace*{4pt}	
+\end{beamercolorbox}
+
+%second colorbox
+\begin{beamercolorbox}[center,wd=0.9\paperwidth,ht=151pt]{Title}
+  \vbox to 151pt {\vfil
+\usebeamerfont{title}\usebeamercolor[fg]{title}\centering\textbf{\inserttitle}\par
+\usebeamerfont{subtitle}\usebeamercolor[fg]{title}\insertsubtitle\par
+\bigskip
+\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor\par
+\medskip
+\usebeamerfont{institute}{\tiny \insertinstitute}\par
+\vfil}%
+\end{beamercolorbox}\vfill%we add a \vfill in case, so that there is a white space between this colorbox and the following one, in case the addition of all colorboxes does not exactly fill in the page
+%last colorbox: it is itself vidived horizontally into 2 colorboxes		
+\begin{beamercolorbox}[center,wd=\paperwidth,ht=45pt]{Title}
+%We put one beamercolorbox into another beamercolorbox
+\@tempdima=\paperwidth%  width of internal colorbox
+\advance\@tempdima by -1ex %  it is slightly smaller than the external one
+\leavevmode%    enables to horizontally align the internal beamercolorboxes
+\begin{beamercolorbox}[center,wd=0.5\@tempdima,ht=45pt]{Title}
+% vbox enables to vertically center what is inside the beamercolorbox
+\vbox to 45pt {\vfil\usebeamerfont{date}\usebeamercolor[fg]{date}\insertdate\vfil}%
+\end{beamercolorbox}\hfill
+\begin{beamercolorbox}[right,wd=0.5\@tempdima,ht=45pt]{Title}
+\pgfuseimage{adressi}\hspace*{4pt}
+\par
+% a short verticl space so that the second logo is not at the bottom of the page
+\vspace*{3pt}
+\end{beamercolorbox}
+\end{beamercolorbox}
+}
+
+\mode
+<all>  	  
