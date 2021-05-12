@@ -11,3 +11,6 @@ NB: il existe une nouvelle version du template powerpoint, elle est sur l'intran
 
 # Origine
 basé sur le template Moo.
+# aperçu
+
+![plot](./template_cired.pdf)
