@@ -6,7 +6,8 @@ Template beamer pour des présentations du labo. Regardez [ici](https://github.c
 - `figures` dossier où mettre les graphiques
 - `logos` logos du labo
 
-Vous trouverez aussi ici le template Powerpoint du labo.
+Vous trouverez aussi ici le template Powerpoint du labo qui correspond à peu près.
+NB: il existe une nouvelle version du template powerpoint, elle est sur l'intranet du labo.
 
 # Origine
 basé sur le template Moo.
